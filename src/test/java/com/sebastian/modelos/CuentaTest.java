@@ -26,14 +26,16 @@ class CuentaTest {
     Persona p;
 
     @BeforeEach
-    void initMethodTest(){
+    void initMethodTest(TestInfo testInfo, TestReporter testReporter){
         p = new Persona("Sebastian", "Gaete", 23);
         c = new Cuenta(p, new BigDecimal("100.000"));
+        testReporter.publishEntry("Ejecutando: " + testInfo.getDisplayName());
     }
 
     @AfterEach
-    void tearDown() {
-        System.out.println("Test aprobado");
+    void tearDown(TestInfo testInfo, TestReporter testReporter) {
+        testReporter.publishEntry("Finalizando: " + testInfo.getDisplayName() + " Aprobado!");
+        System.out.println();
     }
 
     @BeforeAll
@@ -48,6 +50,7 @@ class CuentaTest {
 
 
     @Nested
+    @Tag("atributos")
     @DisplayName("Comprobación atributos de clase")
     class CuentaAtributosTest{
 
@@ -74,7 +77,6 @@ class CuentaTest {
             assertEquals(expected, actual);
         }
 
-
         @Test
         @DisplayName("Saldo que sea mayor que cero")
         void testSaldoMayorQueCero() {
@@ -94,6 +96,7 @@ class CuentaTest {
     }
 
     @Nested
+    @Tag("metodosClass")
     @DisplayName("Comprobación de métodos de clase")
     class CuentaMetodosTest{
 
@@ -115,6 +118,7 @@ class CuentaTest {
     }
 
     @Nested
+    @Tag("exceptions")
     @DisplayName("Comprobación de exceptions")
     class CuentaExceptionsTest{
 

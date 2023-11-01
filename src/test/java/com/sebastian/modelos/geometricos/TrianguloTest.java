@@ -14,6 +14,10 @@ import static org.junit.jupiter.api.Assertions.*;
  los otros métodos de test van a utilizar una instancia u objeto en común, esto para la reutilización de código
  y además existe la anotación @AfterEach, el cual es un método que se va a ejecutar después de cada test.
 
+ Dentro de los BeforeEach y AfterEach podemos inyectar información acerca de los métodos de Test gracias a las
+ interfaces TestInfo y TestReporter, la primera sirve para mostrar información hacerca del método de clase y la
+ segunda es para dar un tipo de formato a la información, en vez de usar System.out.println().
+
  Otros dos métodos del ciclo de vida de los Test son los @BeforeAll y los @AfterAll los cuales SON MÉTODOS DE
  CLASE por lo tanto deben ser STATIC, de lo contrario los test no se van a ejecutar. Estas anotaciones permiten
  que el método se inicialize cuando se inicia el test y cuando ya finalizan todos los Test.
@@ -25,19 +29,19 @@ class TrianguloTest {
 
     // Implementación de anotación @BeforeEach "se ejecuta antes de cada método test"
     @BeforeEach
-    void initMethodTest(){
+    void initMethodTest(TestInfo testInfo, TestReporter testReporter){
         triangulo = new Triangulo(new ArrayList<>(), 10.3, 4.3);
 
         triangulo.addLadoTriangulo(3.2);
         triangulo.addLadoTriangulo(2.3);
         triangulo.addLadoTriangulo(9.3);
-        System.out.println("Iniciando método de prueba");
+        testReporter.publishEntry("Ejecutando: " + testInfo.getDisplayName() );
     }
 
     // Implementación de anotación @AfterEach "se ejecuta despues de cada método test"
     @AfterEach
-    void tearDown(){
-        System.out.println("Test aprobado");
+    void tearDown(TestInfo testInfo, TestReporter testReporter){
+        testReporter.publishEntry("Finalizando: " + testInfo.getDisplayName() + " Aprobado!".concat("\n") );
     }
 
     // Implementación de anotación @BeforeAll "Antes de todos" es un método estático de clase.

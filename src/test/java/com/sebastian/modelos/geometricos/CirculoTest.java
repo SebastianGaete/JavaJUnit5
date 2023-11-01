@@ -4,6 +4,9 @@ import com.sebastian.modelos.exception.LadosTrianguloException;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.*;
 
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -17,6 +20,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
     Tambien podemos categorizar nuestros Test dentro de una clase anidada o innerClass, con la utilizacion de la
     anotación @Nested, solamente para categorizar métodos de Test.
+
+    Otro tipo de estructura para organizar nuestros Test es a través de la anotación @Tag("") en donde colocamos un
+    Target a la InnerClass o método por si solo, solamente para categorizar aún más nuestro Test, ya que podemos ejecutar
+    solamente los innerClass o métodos de Test que tengan un Tag en específico. Se configura en Edit Configurations.
+
+    Otra anotación que implementa JUnit5 es @TimeOut el cual se utiliza generalmente para establecer una condición para
+    que el Test termine dentro del plazo estimado, de lo contrario va a lanzar un error, y a aparte de esta anotación
+    existe el assertTimeOut() el cual realiza lo mismo.
      */
 
 
@@ -33,18 +44,20 @@ class CirculoTest {
     }
 
     @BeforeEach
-    void initMethodTest(){
+    void initMethodTest(TestInfo testInfo, TestReporter testReporter){
         circulo = new Circulo(4.3);
-        System.out.println("Método de Test inicializado");
+        testReporter.publishEntry("Ejecutando: " + testInfo.getDisplayName() + " " +
+                testInfo.getTestMethod().get().getName());
     }
 
     @AfterEach
-    void tearDown() {
-        System.out.println("Metodo de Test aprobado");
+    void tearDown(TestInfo testInfo, TestReporter testReporter) {
+        testReporter.publishEntry("Finalizando: " + testInfo.getDisplayName() + " Aprobado!".concat("\n") );
     }
 
 
     @Nested
+    @Tag("metodosSO")
     @DisplayName("Comprobación métodos de clase Sistemas Operativos")
     class CirculoMethodsSistemaOperativo{
         @Test
@@ -79,6 +92,7 @@ class CirculoTest {
 
 
     @Nested
+    @Tag("metodosJRE")
     @DisplayName("Comprobacion métodos de clase Version de Java")
     class CirculoMethodTestVersionJava{
         @Test
@@ -104,6 +118,7 @@ class CirculoTest {
 
 
     @Nested
+    @Tag("metodos")
     @DisplayName("Comprobación métodos de clase")
     class circuloMethodsTest{
         @Test
@@ -131,6 +146,33 @@ class CirculoTest {
             double cirunferenciaActual = circulo.calculoPerimetroOCircunferencia();
             assertEquals(133.0, cirunferenciaActual );
         }
+
+    }
+
+    // Implementación de @TimeOut y assertTimeOut.
+    @Nested
+    @Tag("TimeOut")
+    @DisplayName("Comprobación métodos de clase con Time out")
+    class circuloTestTimeOut{
+
+        @Test
+        @DisplayName("Utilizando anotacion @TimeOut")
+        @Timeout(2)  // Anotación a la cual le pasamos el tiempo (segundos, milisegundo, minutos, horas, etc)
+        void testTimeOutAnotacion() throws InterruptedException {
+            TimeUnit.SECONDS.sleep(1);
+        }
+
+        @Test
+        @DisplayName("Utilizando assertTimeOut")
+        void testAreaAssertTimeOut() throws InterruptedException {
+            // assert para realizar lo mismo, pero espera como primer argumento un objeto de tipo Duration y despues
+            // la tarea a realizar mediante una expresion lambda.
+            assertTimeout(Duration.ofMinutes(10), ()->{
+                circulo.calculoArea();
+            });
+        }
+
+
 
     }
 }
