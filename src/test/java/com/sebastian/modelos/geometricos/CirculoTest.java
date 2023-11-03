@@ -1,6 +1,6 @@
 package com.sebastian.modelos.geometricos;
 
-import com.sebastian.modelos.exception.LadosTrianguloException;
+import com.sebastian.modelos.geometricos.models.Circulo;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.*;
 
@@ -100,7 +100,7 @@ class CirculoTest {
         @DisplayName("Circuferencia Java 20")
         void testMethodCircunferencia() {
             circulo.setRadio(22.1);
-            double cirunferenciaActual = circulo.calculoPerimetroOCircunferencia();
+            double cirunferenciaActual = circulo.calculoCircunferencia();
             assertEquals(133.0, cirunferenciaActual );
         }
 
@@ -143,7 +143,7 @@ class CirculoTest {
         @DisplayName("Circunferencia")
         void testMethodCircunferencia() {
             circulo.setRadio(22.1);
-            double cirunferenciaActual = circulo.calculoPerimetroOCircunferencia();
+            double cirunferenciaActual = circulo.calculoCircunferencia();
             assertEquals(133.0, cirunferenciaActual );
         }
 

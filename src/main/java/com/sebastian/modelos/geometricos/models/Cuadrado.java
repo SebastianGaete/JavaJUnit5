@@ -1,17 +1,13 @@
-package com.sebastian.modelos.geometricos;
+package com.sebastian.modelos.geometricos.models;
 import com.sebastian.modelos.exception.IgualdadLadosCuadradoException;
+import com.sebastian.modelos.geometricos.abstracts.FiguraGeometricaConLados;
+import com.sebastian.modelos.geometricos.repository.GeometricoBasicoArea;
+import com.sebastian.modelos.geometricos.repository.GeometricoBasicoPerimetro;
 
-import java.security.spec.ECField;
-import java.util.List;
 
-
-public class Cuadrado extends FiguraGeometrica implements CalculosGeometricos{
+public class Cuadrado extends FiguraGeometricaConLados implements GeometricoBasicoArea, GeometricoBasicoPerimetro {
 
     private  final String messageException = "Los cuadrados deben tener sus cuatro lados iguales.";
-
-    public Cuadrado(List<Double> lados) {
-        super(lados);
-    }
 
     private boolean ladosIgualesCuadrado(){
         if(lados.size() != 4){
@@ -34,14 +30,11 @@ public class Cuadrado extends FiguraGeometrica implements CalculosGeometricos{
         if(ladosIgualesCuadrado() == false){
             throw new IgualdadLadosCuadradoException(messageException);
         }
-
         area = getLados().get(0) * getLados().get(0);
         return Math.round(area);
     }
-
-
     @Override
-    public double calculoPerimetroOCircunferencia() {
+    public double calculoPerimetro() {
         double perimetro = 0;
         if(ladosIgualesCuadrado() == false){
             throw new IgualdadLadosCuadradoException(messageException);

@@ -1,8 +1,8 @@
-package com.sebastian.modelos.geometricos;
+package com.sebastian.modelos.geometricos.models;
+import com.sebastian.modelos.geometricos.repository.GeometricoBasicoArea;
+import com.sebastian.modelos.geometricos.repository.GeometricoCircunferencia;
 
-import com.sebastian.modelos.exception.LadosTrianguloException;
-
-public class Circulo implements CalculosGeometricos{
+public class Circulo implements GeometricoCircunferencia, GeometricoBasicoArea {
     private final double Pi = Math.PI;
     private double radio;
 
@@ -32,7 +32,7 @@ public class Circulo implements CalculosGeometricos{
     }
 
     @Override
-    public double calculoPerimetroOCircunferencia() {
+    public double calculoCircunferencia() {
         return Math.round(2 * getPi() * getRadio());
     }
 

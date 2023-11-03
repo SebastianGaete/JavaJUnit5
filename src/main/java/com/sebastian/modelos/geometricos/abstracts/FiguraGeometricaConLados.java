@@ -1,12 +1,12 @@
-package com.sebastian.modelos.geometricos;
+package com.sebastian.modelos.geometricos.abstracts;
 
 import java.util.ArrayList;
 import java.util.List;
 
-abstract public class FiguraGeometrica {
+abstract public class FiguraGeometricaConLados {
     protected List<Double> lados;
 
-    public FiguraGeometrica(List<Double> lados) {
+    public FiguraGeometricaConLados() {
         this.lados = new ArrayList<>();
     }
 

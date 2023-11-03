@@ -1,16 +1,15 @@
-package com.sebastian.modelos.geometricos;
+package com.sebastian.modelos.geometricos.models;
 import com.sebastian.modelos.exception.LadosTrianguloException;
+import com.sebastian.modelos.geometricos.abstracts.FiguraGeometricaConLados;
+import com.sebastian.modelos.geometricos.repository.GeometricoBasicoArea;
+import com.sebastian.modelos.geometricos.repository.GeometricoBasicoPerimetro;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
-
-public class Triangulo extends FiguraGeometrica implements CalculosGeometricos {
+public class Triangulo extends FiguraGeometricaConLados implements GeometricoBasicoArea, GeometricoBasicoPerimetro {
     private Double base;
     private Double altura;
 
-    public Triangulo(List<Double> lados, Double base, Double altura) {
-        super(lados);
+    public Triangulo(Double base, Double altura) {
         this.base = base;
         this.altura = altura;
     }
@@ -42,7 +41,7 @@ public class Triangulo extends FiguraGeometrica implements CalculosGeometricos {
     }
 
     @Override
-    public double calculoPerimetroOCircunferencia(){
+    public double calculoPerimetro(){
         double suma = 0;
 
         if( lados.size() != 3 ){

@@ -1,12 +1,10 @@
 package com.sebastian.modelos.geometricos;
 
 import com.sebastian.modelos.exception.IgualdadLadosCuadradoException;
+import com.sebastian.modelos.geometricos.models.Cuadrado;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,7 +14,7 @@ class CuadradoTest {
 
     @BeforeEach
     void initMethodTest(){
-        cuadrado = new Cuadrado(new ArrayList<>());
+        cuadrado = new Cuadrado();
         cuadrado.addLados(3.2);
         cuadrado.addLados(3.2);
         cuadrado.addLados(3.2);
@@ -55,11 +53,6 @@ class CuadradoTest {
                     () -> assertTrue( cuadrado.getLados().get(3) != valorLados )
             );
         }
-
-
-
-
-
     }
 
     @Nested
@@ -69,7 +62,7 @@ class CuadradoTest {
         @Test
         @DisplayName("Igualdad Lados Cuadrado Exception")
         void testExceptionCuadrado(){
-            Cuadrado cuadrado2 = new Cuadrado( new ArrayList<>());
+            Cuadrado cuadrado2 = new Cuadrado();
             cuadrado2.addLados(1.2);
             cuadrado2.addLados(1.2);
             cuadrado2.addLados(2.2);

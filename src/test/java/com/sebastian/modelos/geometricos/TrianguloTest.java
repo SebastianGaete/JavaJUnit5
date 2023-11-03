@@ -1,10 +1,8 @@
 package com.sebastian.modelos.geometricos;
 
 import com.sebastian.modelos.exception.LadosTrianguloException;
+import com.sebastian.modelos.geometricos.models.Triangulo;
 import org.junit.jupiter.api.*;
-
-import java.lang.annotation.Annotation;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,7 +28,7 @@ class TrianguloTest {
     // Implementación de anotación @BeforeEach "se ejecuta antes de cada método test"
     @BeforeEach
     void initMethodTest(TestInfo testInfo, TestReporter testReporter){
-        triangulo = new Triangulo(new ArrayList<>(), 10.3, 4.3);
+        triangulo = new Triangulo(10.3, 4.3);
 
         triangulo.addLadoTriangulo(3.2);
         triangulo.addLadoTriangulo(2.3);
@@ -72,7 +70,7 @@ class TrianguloTest {
         @Test
         @DisplayName("Perímetro")
         void testMetodoCalcularPerimetro() {
-            double perimetro = triangulo.calculoPerimetroOCircunferencia();
+            double perimetro = triangulo.calculoPerimetro();
             assertEquals(14.8, perimetro);
         }
     }
@@ -83,13 +81,13 @@ class TrianguloTest {
         @Test
         @DisplayName("Exception LadoTrianguloException")
         void testMetodoCalcularPerimetroException() {
-            Triangulo triangulo2 = new Triangulo(new ArrayList<>(), 10.3, 4.3);
+            Triangulo triangulo2 = new Triangulo(10.3, 4.3);
             triangulo2.addLadoTriangulo(3.2);
             triangulo2.addLadoTriangulo(3.2);
             triangulo2.addLadoTriangulo(3.2);
             triangulo2.addLadoTriangulo(3.2);
 
-            assertThrows(LadosTrianguloException.class, ()-> triangulo2.calculoPerimetroOCircunferencia());
+            assertThrows(LadosTrianguloException.class, ()-> triangulo2.calculoPerimetro());
         }
     }
 }
