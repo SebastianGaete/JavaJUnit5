@@ -1,6 +1,6 @@
-package com.sebastian.modelos;
+package com.sebastian.modelsJUnit5;
 
-import com.sebastian.modelos.exception.DineroInsuficienteException;
+import com.sebastian.exceptions.DineroInsuficienteException;
 
 import java.math.BigDecimal;
 

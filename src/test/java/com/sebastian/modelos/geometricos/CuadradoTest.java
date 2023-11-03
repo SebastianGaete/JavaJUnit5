@@ -1,7 +1,7 @@
 package com.sebastian.modelos.geometricos;
 
-import com.sebastian.modelos.exception.IgualdadLadosCuadradoException;
-import com.sebastian.modelos.geometricos.models.Cuadrado;
+import com.sebastian.exceptions.IgualdadLadosCuadradoException;
+import com.sebastian.geometricos.models.Cuadrado;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

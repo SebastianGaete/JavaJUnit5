@@ -1,4 +1,4 @@
-package com.sebastian.modelos.geometricos.repository;
+package com.sebastian.geometricos.repository;
 
 public interface GeometricoCircunferencia {
     public double calculoCircunferencia();

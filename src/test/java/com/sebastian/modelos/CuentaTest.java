@@ -1,6 +1,8 @@
 package com.sebastian.modelos;
 
-import com.sebastian.modelos.exception.DineroInsuficienteException;
+import com.sebastian.exceptions.DineroInsuficienteException;
+import com.sebastian.modelsJUnit5.Cuenta;
+import com.sebastian.modelsJUnit5.Persona;
 import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;

@@ -1,8 +1,8 @@
-package com.sebastian.modelos.geometricos.models;
-import com.sebastian.modelos.exception.IgualdadLadosCuadradoException;
-import com.sebastian.modelos.geometricos.abstracts.FiguraGeometricaConLados;
-import com.sebastian.modelos.geometricos.repository.GeometricoBasicoArea;
-import com.sebastian.modelos.geometricos.repository.GeometricoBasicoPerimetro;
+package com.sebastian.geometricos.models;
+import com.sebastian.exceptions.IgualdadLadosCuadradoException;
+import com.sebastian.geometricos.repository.GeometricoBasicoArea;
+import com.sebastian.geometricos.abstracts.FiguraGeometricaConLados;
+import com.sebastian.geometricos.repository.GeometricoBasicoPerimetro;
 
 
 public class Cuadrado extends FiguraGeometricaConLados implements GeometricoBasicoArea, GeometricoBasicoPerimetro {

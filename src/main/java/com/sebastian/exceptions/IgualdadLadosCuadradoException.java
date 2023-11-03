@@ -1,4 +1,4 @@
-package com.sebastian.modelos.exception;
+package com.sebastian.exceptions;
 
 public class IgualdadLadosCuadradoException extends RuntimeException{
 

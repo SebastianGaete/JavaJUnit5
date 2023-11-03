@@ -1,8 +1,8 @@
-package com.sebastian.modelos.geometricos.models;
-import com.sebastian.modelos.exception.LadosTrianguloException;
-import com.sebastian.modelos.geometricos.abstracts.FiguraGeometricaConLados;
-import com.sebastian.modelos.geometricos.repository.GeometricoBasicoArea;
-import com.sebastian.modelos.geometricos.repository.GeometricoBasicoPerimetro;
+package com.sebastian.geometricos.models;
+import com.sebastian.exceptions.LadosTrianguloException;
+import com.sebastian.geometricos.abstracts.FiguraGeometricaConLados;
+import com.sebastian.geometricos.repository.GeometricoBasicoArea;
+import com.sebastian.geometricos.repository.GeometricoBasicoPerimetro;
 
 
 public class Triangulo extends FiguraGeometricaConLados implements GeometricoBasicoArea, GeometricoBasicoPerimetro {

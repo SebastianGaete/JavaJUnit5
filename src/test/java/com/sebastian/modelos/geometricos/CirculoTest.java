@@ -1,6 +1,6 @@
 package com.sebastian.modelos.geometricos;
 
-import com.sebastian.modelos.geometricos.models.Circulo;
+import com.sebastian.geometricos.models.Circulo;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.*;
 

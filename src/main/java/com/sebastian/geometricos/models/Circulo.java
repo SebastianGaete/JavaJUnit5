@@ -1,6 +1,6 @@
-package com.sebastian.modelos.geometricos.models;
-import com.sebastian.modelos.geometricos.repository.GeometricoBasicoArea;
-import com.sebastian.modelos.geometricos.repository.GeometricoCircunferencia;
+package com.sebastian.geometricos.models;
+import com.sebastian.geometricos.repository.GeometricoBasicoArea;
+import com.sebastian.geometricos.repository.GeometricoCircunferencia;
 
 public class Circulo implements GeometricoCircunferencia, GeometricoBasicoArea {
     private final double Pi = Math.PI;

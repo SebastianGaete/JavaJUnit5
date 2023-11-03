@@ -1,4 +1,4 @@
-package com.sebastian.modelos.geometricos.abstracts;
+package com.sebastian.geometricos.abstracts;
 
 import java.util.ArrayList;
 import java.util.List;

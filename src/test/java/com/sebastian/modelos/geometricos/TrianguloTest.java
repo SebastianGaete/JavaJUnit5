@@ -1,7 +1,7 @@
 package com.sebastian.modelos.geometricos;
 
-import com.sebastian.modelos.exception.LadosTrianguloException;
-import com.sebastian.modelos.geometricos.models.Triangulo;
+import com.sebastian.exceptions.LadosTrianguloException;
+import com.sebastian.geometricos.models.Triangulo;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;

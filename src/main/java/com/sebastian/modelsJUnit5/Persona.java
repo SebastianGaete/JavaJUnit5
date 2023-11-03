@@ -1,4 +1,4 @@
-package com.sebastian.modelos;
+package com.sebastian.modelsJUnit5;
 
 public class Persona {
     private String nombre;
